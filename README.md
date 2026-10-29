@@ -6,6 +6,8 @@
 
 > 这个目录不是单一 package，而是一组功能模块的组合工作区。核心目标是：底盘控制 + IMU/LiDAR 定位 + 视觉识别 + 追球与捡球策略 + 监控和应用桥接。
 
+硬件设计与这里的 ROS 2 源码使用不同许可。硬件条款见 [License & Usage](#12-license--usage)，不自动适用于本工作区软件。
+
 ---
 
 ## 1. 目录结构与功能分层
@@ -265,5 +267,36 @@ ros2 launch app_server app_bridge.launch.py
 
   <div style="font-size:28px; font-weight:600; color:#2f2f2f; margin-top:8px; font-family: 'Segoe UI', Arial, sans-serif;">扫码加我，添加我为朋友。</div>
 </div>
+
+---
+
+## 12. License & Usage
+
+硬件设计与软件源码分开授权。[NovaRobot 硬件设计许可协议](LICENSE-HARDWARE.md) 只覆盖明确标注适用该协议的硬件设计文件。它不作为本目录 ROS 2 源码的默认许可证。
+
+### 12.1 硬件设计
+
+适用 [LICENSE-HARDWARE.md](LICENSE-HARDWARE.md) 的内容包括 3D 打印模型、STL/STEP、机械结构图、装配图、接线图及相关设计文档。
+
+在遵守该协议的前提下，可以下载、查看，并用于个人学习、研究、教育和非商业 DIY，包括自行打印、加工、组装，以及为个人制作所做的结构修改。未经 NovaRobot 权利人事先书面授权，不得批量生产或销售基于这些设计的零件、配件或整机，也不得把原始设计或修改版本当作付费设计资料再发布。
+
+仓库中下列目录的说明文件已标明适用该协议：
+
+| 目录 | 内容 |
+| --- | --- |
+| [`03_打印件/`](../03_打印件/README.md) | 3D 打印模型（本仓库中的 3D 模型目录） |
+| [`04_装配图/`](../04_装配图/README.md) | 装配图与机械结构资料 |
+| [`05_接线图/`](../05_接线图/README.md) | 接线与硬件接口资料 |
+
+这些目录对应硬件设计与 3D 模型资料。商业化制造、批量生产和销售需另行取得书面授权，联系方式见 [LICENSE-HARDWARE.md](LICENSE-HARDWARE.md)。
+
+### 12.2 软件源码
+
+本文件描述的是 ROS 2 Humble 工作区。这里的软件不因硬件采用自定义许可，就默认适用 [LICENSE-HARDWARE.md](LICENSE-HARDWARE.md)。
+
+- 各软件包以自身的 `LICENSE`、`LICENSE.txt` 和 `package.xml` 中的 `<license>` 为准。
+- 第三方组件保留上游许可证。例如：`realsense-ros`、`robot_localization`、`YOLOX-ROS` 为 Apache-2.0；`livox_ros_driver2`、`FASTLIO2_ROS2` 为 MIT；`yolo_ros` 为 GPL-3；`slam_toolbox` 为 LGPL；`pointcloud_to_laserscan` 为 BSD。再分发或修改前请打开对应包内的许可文件核对。
+- NovaRobot 自有包同样单独声明。`novarobot_bringup` 的 `package.xml` 为 MIT，`novarobot_vision_court` 为 Apache-2.0。`novarobot_description`、`novarobot_base_node` 等仍为 `TODO: License declaration` 的包，表示软件许可尚未填写，不能据此视为已采用硬件许可。
+- 阅读、编译或运行本工作区，不授予硬件设计的商业制造或销售权利。
 
 ---
